@@ -1,13 +1,13 @@
-#ifndef GL_UTILS_SHADERS_HPP
-#define GL_UTILS_SHADERS_HPP
+#ifndef GLOO_SHADERS_HPP
+#define GLOO_SHADERS_HPP
 
-#include "gl_utils.hpp"
+#include "gloo.hpp"
 
 #include <fstream>
 #include <sstream>
 #include <string>
 
-namespace gl_utils {
+namespace gloo {
   class Shader final : public GLObj {
   public:
     Shader(const char* source, GLenum shader_type) {
@@ -15,7 +15,7 @@ namespace gl_utils {
       glShaderSource(id, 1, &source, nullptr);
       glCompileShader(id);
 
-#ifndef GL_UTILS_SKIP_SHADER_CHECK
+#ifndef GLOO_SKIP_SHADER_CHECK
       GLint isCompiled = 0;
       glGetShaderiv(id, GL_COMPILE_STATUS, &isCompiled);
       if (isCompiled == GL_FALSE) {
@@ -52,7 +52,7 @@ namespace gl_utils {
       glAttachShader(id, fragment_shader.get_id());
       glLinkProgram(id);
 
-#ifndef GL_UTILS_SKIP_SHADER_CHECK
+#ifndef GLOO_SKIP_SHADER_CHECK
       GLint isLinked = 0;
       glGetProgramiv(id, GL_LINK_STATUS, &isLinked);
       if (isLinked == GL_FALSE) {

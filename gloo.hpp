@@ -1,11 +1,11 @@
-#ifndef GL_UTILS_HPP
-#define GL_UTILS_HPP
+#ifndef GLOO_HPP
+#define GLOO_HPP
 
-#ifndef GL_UTILS_NOGLEW
+#ifndef GLOO_NOGLEW
 #include <GL/glew.h>
 #endif
 
-namespace gl_utils {
+namespace gloo {
   class GLObj {
   protected:
     GLuint id;

@@ -1,4 +1,4 @@
-# gl\_utils
+# gloo
 
 A small collection of classes to make writing opengl code a bit less verbose.
 

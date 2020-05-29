@@ -1,12 +1,12 @@
-#ifndef GL_UTILS_VBO_HPP
-#define GL_UTILS_VBO_HPP
+#ifndef GLOO_VBO_HPP
+#define GLOO_VBO_HPP
 
-#include "gl_utils.hpp"
+#include "gloo.hpp"
 
 #include <vector>
 #include <typeinfo>
 
-namespace gl_utils {
+namespace gloo {
   class VBO final : public GLObj {
     GLenum m_target;
   public:

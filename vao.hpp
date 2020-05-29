@@ -1,12 +1,12 @@
-#ifndef GL_UTILS_VAO_HPP
-#define GL_UTILS_VAO_HPP
+#ifndef GLOO_VAO_HPP
+#define GLOO_VAO_HPP
 
 #include <vector>
 
-#include "gl_utils.hpp"
+#include "gloo.hpp"
 #include "vbo.hpp"
 
-namespace gl_utils {
+namespace gloo {
   struct VertexAttrib {
     const VBO& vbo;
     GLuint index;
