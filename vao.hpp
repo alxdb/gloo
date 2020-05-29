@@ -10,12 +10,22 @@ namespace gloo {
   struct VertexAttrib {
     const VBO& vbo;
     GLuint index;
-    GLint size = 4;
-    GLsizei stride = 0;
-    const GLvoid* pointer = 0;
+    GLenum type;
+    GLint size;
+    GLsizei stride;
+    const GLvoid* ptr;
     // should use optional, but I want stick to C++11. Hopefully, OpenGL doesn't use 0 as a meaningfull value here
-    GLenum type = 0;
-    GLboolean normalized = false;
+    GLboolean normalized;
+
+    VertexAttrib(
+      const VBO& vbo,
+      GLuint index,
+      GLenum type = GL_FLOAT,
+      GLint size = 4,
+      GLsizei stride = 0,
+      const GLvoid* ptr = 0,
+      GLboolean normalized = GL_FALSE
+    ) : vbo(vbo), index(index), type(type), size(size), stride(stride), ptr(ptr), normalized(normalized) { };
   };
 
   class VAO final : public GLObj {
@@ -27,10 +37,10 @@ namespace gloo {
         const VBO& vbo = attrib.vbo;
         glEnableVertexAttribArray(attrib.index);
         glBindBuffer(vbo.target, vbo.get_id());
-        GLenum type = attrib.type ? attrib.type : vbo.get_gl_type();
-        glVertexAttribPointer(attrib.index, attrib.size, type, attrib.normalized, attrib.stride, attrib.pointer);
+        glVertexAttribPointer(attrib.index, attrib.size, attrib.type, attrib.normalized, attrib.stride, attrib.ptr);
       }
     };
+
     ~VAO() { glDeleteVertexArrays(1, &id); }
   };
 }
