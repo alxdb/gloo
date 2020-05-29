@@ -6,22 +6,25 @@
 #endif
 
 namespace gloo {
-  class GLObj {
-  protected:
-    GLuint id;
-    GLObj() {};
 
-  public:
-    GLuint get_id() const { return id; }
+class GLObj {
+protected:
+  GLuint id = 0;
+  GLObj(){};
 
-    GLObj(const GLObj&) = delete;
-    GLObj& operator=(const GLObj&) = delete;
-    virtual ~GLObj() {};
-  };
-}
+public:
+  GLuint get_id() const { return id; }
 
-#include "vbo.hpp"
-#include "vao.hpp"
+  GLObj(const GLObj&) = delete;
+  GLObj& operator=(const GLObj&) = delete;
+  GLObj(GLObj&& other) : id(other.id) { other.id = 0; }
+  virtual ~GLObj(){};
+};
+
+} // namespace gloo
+
 #include "shaders.hpp"
+#include "vao.hpp"
+#include "vbo.hpp"
 
 #endif
