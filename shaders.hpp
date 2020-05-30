@@ -8,6 +8,7 @@
 #include <string>
 
 namespace gloo {
+
 class Shader final : public GLObj {
 public:
   Shader(const char* source, GLenum shader_type) {
