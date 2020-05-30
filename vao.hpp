@@ -15,11 +15,15 @@ struct VertexAttrib {
   GLint size;
   GLsizei stride;
   const GLvoid* ptr;
-  // should use optional, but I want stick to C++11. Hopefully, OpenGL doesn't use 0 as a meaningfull value here
   GLboolean normalized;
 
-  VertexAttrib(const VBO& vbo, GLuint index, GLenum type = GL_FLOAT, GLint size = 4, GLsizei stride = 0,
-               const GLvoid* ptr = 0, GLboolean normalized = GL_FALSE)
+  VertexAttrib(const VBO& vbo,
+               GLuint index,
+               GLenum type = GL_FLOAT,
+               GLint size = 4,
+               GLsizei stride = 0,
+               const GLvoid* ptr = 0,
+               GLboolean normalized = GL_FALSE)
       : vbo(vbo), index(index), type(type), size(size), stride(stride), ptr(ptr), normalized(normalized){};
 };
 
