@@ -18,16 +18,13 @@ public:
     glGenBuffers(1, &id);
     glBindBuffer(m_target, id);
     glBufferData(m_target, n_el * sizeof(T), data, usage);
-  };
+  }
 
   template <class T, size_t N>
-  VBO(GLenum target, const std::array<T, N>& arr, GLenum usage) : VBO(target, arr.data(), N, usage){};
+  VBO(GLenum target, const std::array<T, N>& arr, GLenum usage) : VBO(target, arr.data(), N, usage) {}
 
   template <class T>
-  VBO(GLenum target, const std::vector<T>& vec, GLenum usage) : VBO(target, vec.data(), vec.size(), usage){};
-
-  template <class T>
-  VBO(GLenum target, size_t n_el, GLenum usage) : VBO(target, (const T*)nullptr, n_el * sizeof(T), usage){};
+  VBO(GLenum target, const std::vector<T>& vec, GLenum usage) : VBO(target, vec.data(), vec.size(), usage) {}
 
   template <class T> void update_data(const T* data, const size_t n_el, const int offset) {
     glBindBuffer(m_target, id);
