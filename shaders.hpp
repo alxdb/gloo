@@ -39,6 +39,9 @@ public:
   Shader(std::ifstream& source_filestream, GLenum shader_type)
       : Shader(std::string(std::istreambuf_iterator<char>(source_filestream), std::istreambuf_iterator<char>()),
                shader_type){};
+  Shader(std::ifstream&& source_filestream, GLenum shader_type)
+      : Shader(std::string(std::istreambuf_iterator<char>(source_filestream), std::istreambuf_iterator<char>()),
+               shader_type){};
   ~Shader() noexcept { glDeleteShader(id); }
 };
 
@@ -72,6 +75,9 @@ public:
   };
   Program(std::ifstream& vertex_filestream, std::ifstream& fragment_filestream)
       : Program(Shader(vertex_filestream, GL_VERTEX_SHADER), Shader(fragment_filestream, GL_FRAGMENT_SHADER)){};
+  Program(std::ifstream&& vertex_filestream, std::ifstream&& fragment_filestream)
+      : Program(Shader(vertex_filestream, GL_VERTEX_SHADER), Shader(fragment_filestream, GL_FRAGMENT_SHADER)){};
+  Program(Program&& other) : GLObj(std::move(other)){};
   ~Program() noexcept { glDeleteProgram(id); }
 };
 

@@ -40,6 +40,7 @@ public:
     update_data(data.data(), data.size() - end_offset, offset);
   }
 
+  VBO(VBO&& other) : GLObj(std::move(other)), m_target(other.m_target){};
   ~VBO() { glDeleteBuffers(1, &id); }
 };
 } // namespace gloo

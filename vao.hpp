@@ -39,6 +39,7 @@ public:
       glVertexAttribPointer(attrib.index, attrib.size, attrib.type, attrib.normalized, attrib.stride, attrib.ptr);
     }
   };
+  VAO(VAO&& other) : GLObj(std::move(other)){};
 
   ~VAO() { glDeleteVertexArrays(1, &id); }
 };
