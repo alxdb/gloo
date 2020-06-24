@@ -24,6 +24,7 @@ public:
 } // namespace gloo
 
 #include "shaders.hpp"
+#include "texture.hpp"
 #include "vao.hpp"
 #include "vbo.hpp"
 

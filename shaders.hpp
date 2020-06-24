@@ -77,7 +77,9 @@ public:
       : Program(Shader(vertex_filestream, GL_VERTEX_SHADER), Shader(fragment_filestream, GL_FRAGMENT_SHADER)){};
   Program(std::ifstream&& vertex_filestream, std::ifstream&& fragment_filestream)
       : Program(Shader(vertex_filestream, GL_VERTEX_SHADER), Shader(fragment_filestream, GL_FRAGMENT_SHADER)){};
-  Program(Program&& other) : GLObj(std::move(other)){};
+  Program(const std::string& filename_prefix)
+      : Program(std::ifstream(filename_prefix + ".vert"), std::ifstream(filename_prefix + ".frag")){};
+  Program(Program&& other) : GLObj(static_cast<GLObj&&>(other)){};
   ~Program() noexcept { glDeleteProgram(m_id); }
 };
 
