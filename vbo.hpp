@@ -15,7 +15,7 @@ public:
   const GLenum& target = m_target;
 
   template <class T> VBO(GLenum target, const T* data, const size_t n_el, GLenum usage) : m_target(target) {
-    glGenBuffers(1, &id);
+    glGenBuffers(1, &m_id);
     glBindBuffer(m_target, id);
     glBufferData(m_target, n_el * sizeof(T), data, usage);
   }

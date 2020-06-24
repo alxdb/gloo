@@ -9,15 +9,15 @@ namespace gloo {
 
 class GLObj {
 protected:
-  GLuint id = 0;
+  GLuint m_id = 0;
   GLObj(){};
 
 public:
-  GLuint get_id() const { return id; }
+  const GLuint& id = m_id;
 
   GLObj(const GLObj&) = delete;
   GLObj& operator=(const GLObj&) = delete;
-  GLObj(GLObj&& other) : id(other.id) { other.id = 0; }
+  GLObj(GLObj&& other) : m_id(other.m_id) { other.m_id = 0; }
   virtual ~GLObj(){};
 };
 

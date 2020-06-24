@@ -30,12 +30,12 @@ struct VertexAttrib {
 class VAO final : public GLObj {
 public:
   VAO(const std::vector<VertexAttrib>& vertex_attributes) {
-    glGenVertexArrays(1, &id);
+    glGenVertexArrays(1, &m_id);
     glBindVertexArray(id);
     for (VertexAttrib attrib : vertex_attributes) {
       const VBO& vbo = attrib.vbo;
       glEnableVertexAttribArray(attrib.index);
-      glBindBuffer(vbo.target, vbo.get_id());
+      glBindBuffer(vbo.target, vbo.id);
       glVertexAttribPointer(attrib.index, attrib.size, attrib.type, attrib.normalized, attrib.stride, attrib.ptr);
     }
   };
