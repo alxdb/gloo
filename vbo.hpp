@@ -8,6 +8,7 @@
 #include <vector>
 
 namespace gloo {
+
 class VBO final : public GLObj {
   GLenum m_target;
 
@@ -46,6 +47,7 @@ public:
   VBO(VBO&& other) : GLObj(static_cast<GLObj&&>(other)), m_target(other.m_target){};
   ~VBO() { glDeleteBuffers(1, &id); }
 };
+
 } // namespace gloo
 
 #endif

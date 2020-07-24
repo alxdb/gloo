@@ -1,10 +1,6 @@
 #ifndef GLOO_HPP
 #define GLOO_HPP
 
-#ifndef GLOO_NOGLEW
-#include <GL/glew.h>
-#endif
-
 namespace gloo {
 
 class GLObj {

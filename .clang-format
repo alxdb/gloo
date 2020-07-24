@@ -1,5 +1,6 @@
 BasedOnStyle: LLVM
 ColumnLimit: 120
 BinPackParameters: false
+BinPackArguments: false
 PointerAlignment: Left
 AlwaysBreakTemplateDeclarations: Yes

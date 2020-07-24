@@ -16,7 +16,7 @@ public:
     glShaderSource(m_id, 1, &source, nullptr);
     glCompileShader(m_id);
 
-#ifndef GLOO_SKIP_SHADER_CHECK
+#ifdef GLOO_SHADER_CHECK
     GLint isCompiled = 0;
     glGetShaderiv(m_id, GL_COMPILE_STATUS, &isCompiled);
     if (isCompiled == GL_FALSE) {
@@ -54,7 +54,7 @@ public:
     glAttachShader(m_id, fragment_shader.id);
     glLinkProgram(m_id);
 
-#ifndef GLOO_SKIP_SHADER_CHECK
+#ifdef GLOO_PROGRAM_CHECK
     GLint isLinked = 0;
     glGetProgramiv(m_id, GL_LINK_STATUS, &isLinked);
     if (isLinked == GL_FALSE) {
