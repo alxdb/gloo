@@ -1,5 +1,5 @@
-#ifndef GLOO_VBO_HPP
-#define GLOO_VBO_HPP
+#ifndef GLOO_BUFFER_HPP
+#define GLOO_BUFFER_HPP
 
 #include "gloo.hpp"
 
@@ -23,10 +23,10 @@ public:
   }
 
   template <class T, size_t N>
-  Buffer(GLenum target, const std::array<T, N>& arr, GLenum usage) : VBO(target, arr.data(), N, usage) {}
+  Buffer(GLenum target, const std::array<T, N>& arr, GLenum usage) : Buffer(target, arr.data(), N, usage) {}
 
   template <class T>
-  Buffer(GLenum target, const std::vector<T>& vec, GLenum usage) : VBO(target, vec.data(), vec.size(), usage) {}
+  Buffer(GLenum target, const std::vector<T>& vec, GLenum usage) : Buffer(target, vec.data(), vec.size(), usage) {}
 
   template <class T>
   void update_data(const T* data, const size_t n_el, const int offset) {
