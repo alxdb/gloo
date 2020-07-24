@@ -22,6 +22,6 @@ public:
 #include "shaders.hpp"
 #include "texture.hpp"
 #include "vao.hpp"
-#include "vbo.hpp"
+#include "buffer.hpp"
 
 #endif

@@ -9,24 +9,24 @@
 
 namespace gloo {
 
-class VBO final : public GLObj {
+class Buffer final : public GLObj {
   GLenum m_target;
 
 public:
   const GLenum& target = m_target;
 
   template <class T>
-  VBO(GLenum target, const T* data, const size_t n_el, GLenum usage) : m_target(target) {
+  Buffer(GLenum target, const T* data, const size_t n_el, GLenum usage) : m_target(target) {
     glGenBuffers(1, &m_id);
     glBindBuffer(m_target, id);
     glBufferData(m_target, n_el * sizeof(T), data, usage);
   }
 
   template <class T, size_t N>
-  VBO(GLenum target, const std::array<T, N>& arr, GLenum usage) : VBO(target, arr.data(), N, usage) {}
+  Buffer(GLenum target, const std::array<T, N>& arr, GLenum usage) : VBO(target, arr.data(), N, usage) {}
 
   template <class T>
-  VBO(GLenum target, const std::vector<T>& vec, GLenum usage) : VBO(target, vec.data(), vec.size(), usage) {}
+  Buffer(GLenum target, const std::vector<T>& vec, GLenum usage) : VBO(target, vec.data(), vec.size(), usage) {}
 
   template <class T>
   void update_data(const T* data, const size_t n_el, const int offset) {
@@ -44,8 +44,8 @@ public:
     update_data(data.data(), data.size() - end_offset, offset);
   }
 
-  VBO(VBO&& other) : GLObj(static_cast<GLObj&&>(other)), m_target(other.m_target){};
-  ~VBO() { glDeleteBuffers(1, &id); }
+  Buffer(Buffer&& other) : GLObj(static_cast<GLObj&&>(other)), m_target(other.m_target){};
+  ~Buffer() { glDeleteBuffers(1, &id); }
 };
 
 } // namespace gloo

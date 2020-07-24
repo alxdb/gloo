@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "gloo.hpp"
-#include "vbo.hpp"
+#include "buffer.hpp"
 
 namespace gloo {
 
@@ -22,11 +22,11 @@ class VAO final : public GLObj {
 public:
   VAO() { glGenVertexArrays(1, &m_id); };
 
-  void add_vertex_buffer(const VBO& vbo, std::vector<VertexAttrib> attributes) {
+  void add_vertex_buffer(const Buffer& vbo, std::vector<VertexAttrib> attributes) {
     glBindVertexArray(id);
+    glBindBuffer(vbo.target, vbo.id);
     for (const VertexAttrib& attrib : attributes) {
       glEnableVertexAttribArray(attrib.index);
-      glBindBuffer(vbo.target, vbo.id);
       glVertexAttribPointer(attrib.index, attrib.size, attrib.type, attrib.normalized, attrib.stride, attrib.ptr);
     }
   };
