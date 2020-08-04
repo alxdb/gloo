@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
 project(gloo)
 
+set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
 add_library(${PROJECT_NAME} INTERFACE)
